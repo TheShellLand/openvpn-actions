@@ -1,0 +1,57 @@
+name: config name
+
+#concurrency:
+#  group: ${{ github.workflow }}-${{ github.ref }}
+#  cancel-in-progress: true
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+  schedule:
+    # At minute 0 past every 5th hour.
+    - cron: "0 */5 * * *"
+
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: install
+        run: bash install.sh
+
+      - name: patch
+        run: bash patch.sh
+
+      - name: config
+        run: bash config.sh
+        env:
+          OPENVPN_SETUP_TOKEN: ${{ secrets.OPENVPN_SETUP_TOKEN }}
+
+  run:
+    needs: test
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: install
+        run: bash install.sh
+
+      - name: patch
+        run: bash patch.sh
+
+      - name: config
+        run: bash config.sh
+        env:
+          OPENVPN_SETUP_TOKEN: ${{ secrets.OPENVPN_SETUP_TOKEN }}
+
+      - name: run
+        run: bash run.sh
+        env:
+          OPENVPN_SETUP_TOKEN: ${{ secrets.OPENVPN_SETUP_TOKEN }}
