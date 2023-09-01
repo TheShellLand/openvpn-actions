@@ -105,6 +105,7 @@ def main():
         sys.exit(2)
 
     if token is None:
+        print(f'token: {token}')
         print("""CloudConnexa™ Connector Setup
 
 This utility is used to configure this host as an OpenVPN Connector
