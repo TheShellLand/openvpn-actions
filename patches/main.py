@@ -121,8 +121,6 @@ proper VPN configuration profile and complete the configuration.\n""")
             print('\n\nAborting\n')
             sys.exit(1)
 
-    else:
-        token = cliopts.token[0]
 
     try:
         # Parse the setup token.  This contains
