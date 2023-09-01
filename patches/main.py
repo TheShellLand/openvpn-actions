@@ -104,7 +104,7 @@ def main():
                   os.path.basename(sys.argv[0]), rootdir))
         sys.exit(2)
 
-    if cliopts.token is None:
+    if token is None:
         print("""CloudConnexa™ Connector Setup
 
 This utility is used to configure this host as an OpenVPN Connector
