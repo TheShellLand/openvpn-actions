@@ -7,6 +7,7 @@ set -ex
 # Linux Connector configuration page in CloudConnexa Portal
 sudo -E openvpn-connector-setup
 
-systemctl status system-openvpn3\x2dsession.slice
+sudo systemctl start system-openvpn3\x2dsession.slice
+sudo systemctl status system-openvpn3\x2dsession.slice
 
 tail -f /var/log/openvpn.log
