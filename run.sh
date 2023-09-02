@@ -7,5 +7,4 @@ set -ex
 # Linux Connector configuration page in CloudConnexa Portal
 sudo -E openvpn-connector-setup
 
-# sleep for 6 hours
-sleep 21600
+tail -f /var/log/syslog
