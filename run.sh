@@ -9,5 +9,7 @@ sudo -E openvpn-connector-setup
 
 sudo systemctl start system-openvpn3\x2dsession.slice
 sudo systemctl status system-openvpn3\x2dsession.slice
+sudo systemctl start openvpn3-session@CloudConnexa.service
+sudo systemctl status openvpn3-session@CloudConnexa.service
 
 tail -f /var/log/syslog /var/log/openvpn.log /var/log/messages | grep -iE "(openvpn|error|fail)"
